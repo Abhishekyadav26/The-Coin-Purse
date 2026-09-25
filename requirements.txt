@@ -1,0 +1,5 @@
+# Real-testnet extras (optional). The default local demo needs NOTHING here —
+# it runs on stdlib only so `python run.py` works out of the box.
+x402[httpx]>=2.0
+eth-account>=0.11
+openai>=1.0

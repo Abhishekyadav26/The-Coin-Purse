@@ -1,0 +1,99 @@
+{
+  "network": "eip155:84532 (Base Sepolia)",
+  "usdc": "0x036CbD53842c5426634e7929541eC2318f3dCF7e",
+  "facilitator": "https://x402.org/facilitator",
+  "mode": "local stalls speaking x402 v2 402 dialect with Base Sepolia requirements; policy/ledger paths identical to live testnet mode (see buyer_real.py, run_real_testnet.py)",
+  "decisions": [
+    {
+      "ts": "2026-09-25T20:31:21.742838+00:00",
+      "stall": "honest",
+      "endpoint": "http://127.0.0.1:8401/rainfall",
+      "amount_base_units": 10000,
+      "asset": "0x036cbd53842c5426634e7929541e2318f3dcf7e",
+      "network": "eip155:84532",
+      "scheme": "exact",
+      "decision": "paid",
+      "reason": "paid $0.010000 USDC (10000 base units) on eip155:84532; approved: $0.010000 USDC within per-call $0.250000 USDC and total $5.000000 USDC (spent $0.000000 USDC so far); tx local-7ffdb46f8e6e368864ecc82adef8839e",
+      "tx_hash": "local-7ffdb46f8e6e368864ecc82adef8839e",
+      "spent_total_after": 10000
+    },
+    {
+      "ts": "2026-09-25T20:31:21.749380+00:00",
+      "stall": "honest",
+      "endpoint": "http://127.0.0.1:8401/prices",
+      "amount_base_units": 20000,
+      "asset": "0x036cbd53842c5426634e7929541e2318f3dcf7e",
+      "network": "eip155:84532",
+      "scheme": "exact",
+      "decision": "paid",
+      "reason": "paid $0.020000 USDC (20000 base units) on eip155:84532; approved: $0.020000 USDC within per-call $0.250000 USDC and total $5.000000 USDC (spent $0.010000 USDC so far); tx local-2aeb70ecf6b1a54c39e6a0d8656eeb64",
+      "tx_hash": "local-2aeb70ecf6b1a54c39e6a0d8656eeb64",
+      "spent_total_after": 30000
+    },
+    {
+      "ts": "2026-09-25T20:31:21.755134+00:00",
+      "stall": "honest",
+      "endpoint": "http://127.0.0.1:8401/satellite",
+      "amount_base_units": 30000,
+      "asset": "0x036cbd53842c5426634e7929541e2318f3dcf7e",
+      "network": "eip155:84532",
+      "scheme": "exact",
+      "decision": "paid",
+      "reason": "paid $0.030000 USDC (30000 base units) on eip155:84532; approved: $0.030000 USDC within per-call $0.250000 USDC and total $5.000000 USDC (spent $0.030000 USDC so far); tx local-472fc603feb601c4b2b9b86b35f05865",
+      "tx_hash": "local-472fc603feb601c4b2b9b86b35f05865",
+      "spent_total_after": 60000
+    },
+    {
+      "ts": "2026-09-25T20:31:21.761902+00:00",
+      "stall": "rogue",
+      "endpoint": "http://127.0.0.1:8402/row",
+      "amount_base_units": 4990000,
+      "asset": "0x036cbd53842c5426634e7929541e2318f3dcf7e",
+      "network": "eip155:84532",
+      "scheme": "exact",
+      "decision": "refused",
+      "reason": "refused: price $4.990000 USDC (4990000 base units) exceeds per-call limit $0.250000 USDC",
+      "tx_hash": null,
+      "spent_total_after": 60000
+    },
+    {
+      "ts": "2026-09-25T20:31:21.765903+00:00",
+      "stall": "rogue",
+      "endpoint": "http://127.0.0.1:8402/exotic",
+      "amount_base_units": 10000,
+      "asset": "0xdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef",
+      "network": "eip155:84532",
+      "scheme": "exact",
+      "decision": "refused",
+      "reason": "refused: untrusted asset '0xdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef' (only test USDC 0x036cbd53842c5426634e7929541e2318f3dcf7e on Base Sepolia)",
+      "tx_hash": null,
+      "spent_total_after": 60000
+    },
+    {
+      "ts": "2026-09-25T20:31:21.771705+00:00",
+      "stall": "rogue",
+      "endpoint": "http://127.0.0.1:8402/tricky",
+      "amount_base_units": 10000,
+      "asset": "0x036cbd53842c5426634e7929541e2318f3dcf7e",
+      "network": "eip155:1",
+      "scheme": "exact",
+      "decision": "refused",
+      "reason": "refused: unsupported network 'eip155:1' (only eip155:84532)",
+      "tx_hash": null,
+      "spent_total_after": 60000
+    },
+    {
+      "ts": "2026-09-25T20:31:21.778279+00:00",
+      "stall": "rogue",
+      "endpoint": "http://127.0.0.1:8402/float",
+      "amount_base_units": null,
+      "asset": "0x036cbd53842c5426634e7929541e2318f3dcf7e",
+      "network": "eip155:84532",
+      "scheme": "exact",
+      "decision": "refused",
+      "reason": "refused: malformed amount '0.01' (amount must be base-unit integer string, got '0.01')",
+      "tx_hash": null,
+      "spent_total_after": 60000
+    }
+  ]
+}

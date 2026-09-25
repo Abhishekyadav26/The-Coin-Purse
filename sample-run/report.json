@@ -1,0 +1,175 @@
+{
+  "report": {
+    "question": "How did June monsoon rainfall move tomato mandi prices around Bengaluru?",
+    "observations": [
+      "get_rainfall: PAID. Data: {\"paid\": true, \"path\": \"/rainfall\", \"data\": {\"dataset\": \"IMD rainfall grid \\u2014 Bengaluru, June week 2\", \"rows\": [{\"day\": \"2026-06-08\", \"rain_mm\": 12.4}, {\"day\": \"2026-06-09\", \"rain_mm\": 3.1}], \"note\": \"monsoon onset slice for mandi-price correlation\"}, \"tx\": \"local-7ffdb46f8e6e368864ecc82adef8839e\"}",
+      "get_mandi_prices: PAID. Data: {\"paid\": true, \"path\": \"/prices\", \"data\": {\"dataset\": \"mandi price feed \\u2014 tomato, Bengaluru\", \"rows\": [{\"mandi\": \"Kolar\", \"rs_per_quintal\": 1450}, {\"mandi\": \"Chickballapur\", \"rs_per_quintal\": 1520}]}, \"tx\": \"local-2aeb70ecf6b1a54c39e6a0d8656eeb64\"}",
+      "get_satellite_summary: PAID. Data: {\"paid\": true, \"path\": \"/satellite\", \"data\": {\"dataset\": \"satellite summary \\u2014 cloud cover / soil moisture\", \"rows\": [{\"region\": \"Kolar belt\", \"soil_moisture\": \"above normal\"}]}, \"tx\": \"local-472fc603feb601c4b2b9b86b35f05865\"}",
+      "get_rogue_row: REFUSED: refused: price $4.990000 USDC (4990000 base units) exceeds per-call limit $0.250000 USDC",
+      "get_rogue_row: REFUSED: refused: untrusted asset '0xdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef' (only test USDC 0x036cbd53842c5426634e7929541e2318f3dcf7e on Base Sepolia)",
+      "get_rogue_row: REFUSED: refused: unsupported network 'eip155:1' (only eip155:84532)",
+      "get_rogue_row: REFUSED: refused: malformed amount '0.01' (amount must be base-unit integer string, got '0.01')"
+    ],
+    "paid_rows": [
+      {
+        "paid": true,
+        "path": "/rainfall",
+        "data": {
+          "dataset": "IMD rainfall grid \u2014 Bengaluru, June week 2",
+          "rows": [
+            {
+              "day": "2026-06-08",
+              "rain_mm": 12.4
+            },
+            {
+              "day": "2026-06-09",
+              "rain_mm": 3.1
+            }
+          ],
+          "note": "monsoon onset slice for mandi-price correlation"
+        },
+        "tx": "local-7ffdb46f8e6e368864ecc82adef8839e"
+      },
+      {
+        "paid": true,
+        "path": "/prices",
+        "data": {
+          "dataset": "mandi price feed \u2014 tomato, Bengaluru",
+          "rows": [
+            {
+              "mandi": "Kolar",
+              "rs_per_quintal": 1450
+            },
+            {
+              "mandi": "Chickballapur",
+              "rs_per_quintal": 1520
+            }
+          ]
+        },
+        "tx": "local-2aeb70ecf6b1a54c39e6a0d8656eeb64"
+      },
+      {
+        "paid": true,
+        "path": "/satellite",
+        "data": {
+          "dataset": "satellite summary \u2014 cloud cover / soil moisture",
+          "rows": [
+            {
+              "region": "Kolar belt",
+              "soil_moisture": "above normal"
+            }
+          ]
+        },
+        "tx": "local-472fc603feb601c4b2b9b86b35f05865"
+      }
+    ],
+    "refused": [
+      "get_rogue_row: REFUSED: refused: price $4.990000 USDC (4990000 base units) exceeds per-call limit $0.250000 USDC",
+      "get_rogue_row: REFUSED: refused: untrusted asset '0xdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef' (only test USDC 0x036cbd53842c5426634e7929541e2318f3dcf7e on Base Sepolia)",
+      "get_rogue_row: REFUSED: refused: unsupported network 'eip155:1' (only eip155:84532)",
+      "get_rogue_row: REFUSED: refused: malformed amount '0.01' (amount must be base-unit integer string, got '0.01')"
+    ],
+    "summary": "Bengaluru onset rains (12.4mm on Jun 8, 3.1mm on Jun 9) coincided with firm tomato prices (Rs 1450/qtl Kolar, Rs 1520/qtl Chickballapur); above-normal soil moisture in the Kolar belt supports a steady-supply read. Evidence: 3 paid honest-stall dataset(s); 4 rogue-stall attempt(s) refused by spending policy."
+  },
+  "decisions": [
+    {
+      "id": 15,
+      "ts": "2026-09-25T20:31:21.742838+00:00",
+      "stall": "honest",
+      "endpoint": "http://127.0.0.1:8401/rainfall",
+      "amount_base_units": 10000,
+      "asset": "0x036cbd53842c5426634e7929541e2318f3dcf7e",
+      "network": "eip155:84532",
+      "scheme": "exact",
+      "decision": "paid",
+      "reason": "paid $0.010000 USDC (10000 base units) on eip155:84532; approved: $0.010000 USDC within per-call $0.250000 USDC and total $5.000000 USDC (spent $0.000000 USDC so far); tx local-7ffdb46f8e6e368864ecc82adef8839e",
+      "tx_hash": "local-7ffdb46f8e6e368864ecc82adef8839e",
+      "spent_total_after": 10000
+    },
+    {
+      "id": 16,
+      "ts": "2026-09-25T20:31:21.749380+00:00",
+      "stall": "honest",
+      "endpoint": "http://127.0.0.1:8401/prices",
+      "amount_base_units": 20000,
+      "asset": "0x036cbd53842c5426634e7929541e2318f3dcf7e",
+      "network": "eip155:84532",
+      "scheme": "exact",
+      "decision": "paid",
+      "reason": "paid $0.020000 USDC (20000 base units) on eip155:84532; approved: $0.020000 USDC within per-call $0.250000 USDC and total $5.000000 USDC (spent $0.010000 USDC so far); tx local-2aeb70ecf6b1a54c39e6a0d8656eeb64",
+      "tx_hash": "local-2aeb70ecf6b1a54c39e6a0d8656eeb64",
+      "spent_total_after": 30000
+    },
+    {
+      "id": 17,
+      "ts": "2026-09-25T20:31:21.755134+00:00",
+      "stall": "honest",
+      "endpoint": "http://127.0.0.1:8401/satellite",
+      "amount_base_units": 30000,
+      "asset": "0x036cbd53842c5426634e7929541e2318f3dcf7e",
+      "network": "eip155:84532",
+      "scheme": "exact",
+      "decision": "paid",
+      "reason": "paid $0.030000 USDC (30000 base units) on eip155:84532; approved: $0.030000 USDC within per-call $0.250000 USDC and total $5.000000 USDC (spent $0.030000 USDC so far); tx local-472fc603feb601c4b2b9b86b35f05865",
+      "tx_hash": "local-472fc603feb601c4b2b9b86b35f05865",
+      "spent_total_after": 60000
+    },
+    {
+      "id": 18,
+      "ts": "2026-09-25T20:31:21.761902+00:00",
+      "stall": "rogue",
+      "endpoint": "http://127.0.0.1:8402/row",
+      "amount_base_units": 4990000,
+      "asset": "0x036cbd53842c5426634e7929541e2318f3dcf7e",
+      "network": "eip155:84532",
+      "scheme": "exact",
+      "decision": "refused",
+      "reason": "refused: price $4.990000 USDC (4990000 base units) exceeds per-call limit $0.250000 USDC",
+      "tx_hash": null,
+      "spent_total_after": 60000
+    },
+    {
+      "id": 19,
+      "ts": "2026-09-25T20:31:21.765903+00:00",
+      "stall": "rogue",
+      "endpoint": "http://127.0.0.1:8402/exotic",
+      "amount_base_units": 10000,
+      "asset": "0xdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef",
+      "network": "eip155:84532",
+      "scheme": "exact",
+      "decision": "refused",
+      "reason": "refused: untrusted asset '0xdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef' (only test USDC 0x036cbd53842c5426634e7929541e2318f3dcf7e on Base Sepolia)",
+      "tx_hash": null,
+      "spent_total_after": 60000
+    },
+    {
+      "id": 20,
+      "ts": "2026-09-25T20:31:21.771705+00:00",
+      "stall": "rogue",
+      "endpoint": "http://127.0.0.1:8402/tricky",
+      "amount_base_units": 10000,
+      "asset": "0x036cbd53842c5426634e7929541e2318f3dcf7e",
+      "network": "eip155:1",
+      "scheme": "exact",
+      "decision": "refused",
+      "reason": "refused: unsupported network 'eip155:1' (only eip155:84532)",
+      "tx_hash": null,
+      "spent_total_after": 60000
+    },
+    {
+      "id": 21,
+      "ts": "2026-09-25T20:31:21.778279+00:00",
+      "stall": "rogue",
+      "endpoint": "http://127.0.0.1:8402/float",
+      "amount_base_units": null,
+      "asset": "0x036cbd53842c5426634e7929541e2318f3dcf7e",
+      "network": "eip155:84532",
+      "scheme": "exact",
+      "decision": "refused",
+      "reason": "refused: malformed amount '0.01' (amount must be base-unit integer string, got '0.01')",
+      "tx_hash": null,
+      "spent_total_after": 60000
+    }
+  ],
+  "spent_base_units": 60000
+}
