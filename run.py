@@ -51,11 +51,8 @@ def main() -> int:
 
     policy = SpendingPolicy()  # $0.25/call, $5.00 total — code, not prompt
     ledger = DecisionLedger(db_path=args.db, jsonl_path=args.jsonl)
-    # Fresh run: clear previous rows from this db file for reproducibility.
-    ledger._conn.execute("DELETE FROM decisions")
-    ledger._conn.commit()
-    if os.path.exists(args.jsonl):
-        os.remove(args.jsonl)
+    # No wipe: history persists, and the buyer restores cumulative spend from
+    # the ledger on startup so the total budget holds across restarts.
     buyer = CoinPurseBuyer(policy=policy, ledger=ledger,
                            buyer_address="0xArjunAgent000000000000000000000000000001")
     agent = ResearchAgent(buyer=buyer, honest_base=args.honest, rogue_base=args.rogue)

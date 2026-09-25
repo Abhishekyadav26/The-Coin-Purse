@@ -75,6 +75,10 @@ class CoinPurseBuyer:
         self.facilitator_url = facilitator_url
         self.buyer_address = buyer_address
         self.local_test_mode = local_test_mode
+        # Cumulative spend is persisted outside process memory: restore the
+        # settled total from the durable ledger so the run budget survives
+        # restarts instead of resetting to an in-memory zero.
+        self.policy.spent_base_units = self.ledger.total_paid_base_units()
 
     # -- low-level HTTP -----------------------------------------------------
     @staticmethod

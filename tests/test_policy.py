@@ -86,9 +86,9 @@ class TestBuyerEndToEnd(unittest.TestCase):
         cls._honest = serve_forever(HonestHandler, 8411)
         cls._rogue = serve_forever(RogueHandler, 8412)
 
-    def _buyer(self):
+    def _buyer(self, db_path=":memory:"):
         policy = SpendingPolicy()
-        ledger = DecisionLedger(db_path=":memory:")
+        ledger = DecisionLedger(db_path=db_path)
         return CoinPurseBuyer(policy=policy, ledger=ledger), policy, ledger
 
     def test_honest_paid_and_recorded(self):
@@ -124,6 +124,22 @@ class TestBuyerEndToEnd(unittest.TestCase):
             params = list(inspect.signature(getattr(agent, name)).parameters)
             for forbidden in ("amount", "price", "asset", "budget", "payTo", "pay_to"):
                 self.assertNotIn(forbidden, [p.lower() for p in params], name)
+
+    def test_spend_restored_from_disk_on_restart(self):
+        import tempfile
+        with tempfile.TemporaryDirectory() as tmp:
+            db = os.path.join(tmp, "decisions.db")
+            buyer1, policy1, ledger1 = self._buyer(db)
+            res = buyer1.fetch("honest", "http://127.0.0.1:8411/rainfall")
+            self.assertTrue(res.ok)
+            self.assertEqual(policy1.spent_base_units, 10_000)
+            ledger1.close()
+            # Fresh process, same durable ledger: budget must survive restart.
+            buyer2, policy2, ledger2 = self._buyer(db)
+            _ = buyer2
+            self.assertEqual(policy2.spent_base_units, 10_000)
+            self.assertEqual(ledger2.total_paid_base_units(), 10_000)
+            ledger2.close()
 
 
 if __name__ == "__main__":

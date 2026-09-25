@@ -5,7 +5,7 @@
   "mode": "local stalls speaking x402 v2 402 dialect with Base Sepolia requirements; policy/ledger paths identical to live testnet mode (see buyer_real.py, run_real_testnet.py)",
   "decisions": [
     {
-      "ts": "2026-09-25T20:31:21.742838+00:00",
+      "ts": "2026-09-25T20:40:54.032901+00:00",
       "stall": "honest",
       "endpoint": "http://127.0.0.1:8401/rainfall",
       "amount_base_units": 10000,
@@ -18,7 +18,7 @@
       "spent_total_after": 10000
     },
     {
-      "ts": "2026-09-25T20:31:21.749380+00:00",
+      "ts": "2026-09-25T20:40:54.040477+00:00",
       "stall": "honest",
       "endpoint": "http://127.0.0.1:8401/prices",
       "amount_base_units": 20000,
@@ -31,7 +31,7 @@
       "spent_total_after": 30000
     },
     {
-      "ts": "2026-09-25T20:31:21.755134+00:00",
+      "ts": "2026-09-25T20:40:54.048522+00:00",
       "stall": "honest",
       "endpoint": "http://127.0.0.1:8401/satellite",
       "amount_base_units": 30000,
@@ -44,7 +44,7 @@
       "spent_total_after": 60000
     },
     {
-      "ts": "2026-09-25T20:31:21.761902+00:00",
+      "ts": "2026-09-25T20:40:54.053762+00:00",
       "stall": "rogue",
       "endpoint": "http://127.0.0.1:8402/row",
       "amount_base_units": 4990000,
@@ -57,7 +57,7 @@
       "spent_total_after": 60000
     },
     {
-      "ts": "2026-09-25T20:31:21.765903+00:00",
+      "ts": "2026-09-25T20:40:54.058190+00:00",
       "stall": "rogue",
       "endpoint": "http://127.0.0.1:8402/exotic",
       "amount_base_units": 10000,
@@ -70,7 +70,7 @@
       "spent_total_after": 60000
     },
     {
-      "ts": "2026-09-25T20:31:21.771705+00:00",
+      "ts": "2026-09-25T20:40:54.062578+00:00",
       "stall": "rogue",
       "endpoint": "http://127.0.0.1:8402/tricky",
       "amount_base_units": 10000,
@@ -83,7 +83,7 @@
       "spent_total_after": 60000
     },
     {
-      "ts": "2026-09-25T20:31:21.778279+00:00",
+      "ts": "2026-09-25T20:40:54.068457+00:00",
       "stall": "rogue",
       "endpoint": "http://127.0.0.1:8402/float",
       "amount_base_units": null,

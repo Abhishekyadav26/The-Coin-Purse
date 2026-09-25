@@ -106,5 +106,17 @@ class DecisionLedger:
         cols = [d[0] for d in cur.description]
         return [dict(zip(cols, r)) for r in cur.fetchall()]
 
+    def total_paid_base_units(self) -> int:
+        """Cumulative settled spend, integer base units, from durable storage.
+
+        The buyer reads this back on startup so the run budget survives
+        restarts — spend is never trusted to a fresh in-memory zero.
+        """
+        cur = self._conn.execute(
+            "SELECT COALESCE(SUM(amount_base_units), 0) FROM decisions "
+            "WHERE decision = 'paid'"
+        )
+        return int(cur.fetchone()[0] or 0)
+
     def close(self) -> None:
         self._conn.close()
